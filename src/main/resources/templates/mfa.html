@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Multi-factor Authentication - TOTP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h2 class="mb-5">Verify passcode</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/mfa/{userId}/{factorId}(userId=${userId},factorId=${factorId})}"
+                  th:object="${totp}" method="post">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="passCode" class="col-form-label">Passcode</label>
+                        <input type="text" th:field="*{passCode}" class="form-control" id="passCode" placeholder="passcode">
+                        <span th:if="${#fields.hasErrors('passCode')}" th:errors="*{passCode}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <p></p>
+                        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Verify">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

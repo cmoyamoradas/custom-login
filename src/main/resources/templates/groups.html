@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <table>
+                <tr>
+                    <td>
+                        <form method="get" th:action="@{/users}">
+                            <button id="users-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">List users</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <div class="row">
+                <div th:switch="${userGroups}" class="column">
+                    <div th:case="*">
+                        <h2 class="my-5"> User Groups</h2>
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="group : ${userGroups}">
+                                <td th:text="${group.profile.name}"></td>
+                                <td th:text="${group.type}"></td>
+                                <td th:text="${group.profile.description}"></td>
+                                <td>
+                                    <span th:if="${group.type == 'OKTA_GROUP'}">
+                                        <a th:href="@{/removeFromGroup/{groupId}/{userId}(groupId=${group.id},userId=${id})}"
+                                           class="btn btn-outline-success my-2 my-sm-0">Remove</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:switch="${groups}" class="column">
+                        <div th:case="*">
+                            <h2 class="my-5">Organization Groups</h2>
+                            <table class="table table-striped table-responsive-md">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="group : ${groups}">
+                                    <td th:text="${group.profile.name}"></td>
+                                    <td th:text="${group.type}"></td>
+                                    <td th:text="${group.profile.description}"></td>
+                                    <td>
+                                        <span th:if="${group.type == 'OKTA_GROUP'}">
+                                            <a th:href="@{/addToGroup/{groupId}/{userId}(groupId=${group.id},userId=${id})}"
+                                               class="btn btn-outline-success my-2 my-sm-0">Add</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

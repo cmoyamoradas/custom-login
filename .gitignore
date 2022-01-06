@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+.mvn
+mvnw
+mvnw.cmd
+target
+trickynickel.iml

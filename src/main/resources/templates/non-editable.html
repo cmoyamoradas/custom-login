@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Delete User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h2 class="mb-5">Edit User</h2>
+        <div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <p>It seems that this user has been sourced from a LDAP.</p>
+                    <p>It cannot be edited from here.</p>
+                    <p>Please, contact the administrators.</p>
+                </div>
+            </div>
+            <div class="row">
+                <form method="get" th:action="@{/users}">
+                    <button id="back" class="btn btn-outline-success my-2 my-sm-0" type="submit">Return to List of users</button>
+                </form>
+            </div>
+        </div>
+</div>
+</body>

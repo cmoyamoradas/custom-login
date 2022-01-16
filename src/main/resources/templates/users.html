@@ -15,7 +15,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <div class="row">
         <div class="col-md-6">
             <div th:case="*">
-                <h2 class="my-5">List of active users</h2>
+                <h2 class="my-5">List of non-deactivated users</h2>
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <p class="my-5">Create new user <a href="/newuser" class="btn btn-outline-success my-2 my-sm-0"><i class="fas fa-user-plus ml-2"></i></a></p>
                 </div>

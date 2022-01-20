@@ -23,17 +23,17 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                // 
+                sh 'mvn --version'
             }
         }
         stage('Package') { 
             steps {
-                // 
+                sh 'mvn --version' 
             }
         }
       stage('Deploy') { 
             steps {
-                // 
+                sh 'mvn --version' 
             }
         }
     }

@@ -1,10 +1,11 @@
 pipeline {
     String branchName = "master"
     //String gitCredentials = "CREDENTIAL_ID"
-    String repoUrl = "https://github.com/cmoyamoradas/custom-login.git"
+    //String repoUrl = "https://github.com/cmoyamoradas/custom-login.git"
     agent{ docker { image 'maven:3.8.4-openjdk-11-slim' } }
      //agent any
     stages {
+        /*
         stage ('Clone'){
             // Clones the repository from the current branch name
             echo 'Make the output directory'
@@ -14,9 +15,11 @@ pipeline {
                 git branch: branchName, url: repoUrl
             }     
         }
+        */
         stage('Compile') { 
             steps {
                 sh 'mvn --version'
+              
             }
         }
         stage('Test') { 

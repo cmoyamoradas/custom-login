@@ -1,9 +1,9 @@
 pipeline {
-    String branchName = "master"
+    //String branchName = "master"
     //String gitCredentials = "CREDENTIAL_ID"
     //String repoUrl = "https://github.com/cmoyamoradas/custom-login.git"
-    agent{ docker { image 'maven:3.8.4-openjdk-11-slim' } }
-     //agent any
+    //agent{ docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    agent any
     stages {
         /*
         stage ('Clone'){
@@ -18,7 +18,7 @@ pipeline {
         */
         stage('Compile') { 
             steps {
-                sh 'mvn --version'
+                //sh 'mvn --version'
               
             }
         }
